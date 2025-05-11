@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset "UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles.css">
+        <title>Admin Forms</title>
+    </head>
+    <div>
+        <body>
+            <h1>GSC Administrative Request Forms</h1>
+            <p>The GSC Administrative forms have been listed below to assist you with your upcoming ministry event(s) or admin request(s).  All sections on selected form must be completed for processing.  Once completed and submitted, the admin office will responded to each request within 48 hours during business hours only.  If further assistance is needed please contact the church office at (610) 252-5640(Main Campus) or (570) 872-9577(Stroudsburg Campus).</p>
+            <p>* Required</p>
+            <div class="inner">
+                <h2>Ministry Contact Information</h2>
+                <ol>
+                    <li required>Name *</li>
+                    <input placeholder="First & Last Name" />
+                    <li required>Campus *</li>
+                    <div class="radio-buttons">
+                        <input name="campus" type="radio" checked /> Easton
+                        <input name="campus" type="radio" /> Stroudsburg
+                        <input name="campus" type="radio" /> Haiti
+                        <input name="campus" type="radio" /> Bethlehem
+                    </div>
+                    <li>Ministry Name</li>
+                    <input placeholder="Enter Your Ministry">
+                    <li>Email *</li>
+                    <input required type="email" placeholder="Yourname@email.com">
+                    <li>Mobile Number</li>
+                    <input type="tel" placeholder="555-555-5555">
+                </ol>
+            </div>
+            <button class="button1">Next</button>
+        </body>
+    </div>
+</html>
