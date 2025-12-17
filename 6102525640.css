@@ -1,0 +1,293 @@
+:root {
+  --workflow-height: 3vw;      /* scales with viewport width */
+  --workflow-arrow: 1vw;       /* arrow tip scales too */
+  --inactive: #a5d6a7;
+  --active: #4CAF50;
+  --text: #333;
+  --text-active: #fff;
+  --field-height: 2.2em;
+  --label-width: 12ch;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 10px;
+  background: #f4f6f9;
+  margin: 40px;
+  color: #333;
+  font-weight: 400;
+  line-height: 22px;
+
+}
+
+.container {
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Workflow chevrons */
+.workflow {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  min-height: var(--workflow-height);
+  font-size: calc(0.5vw + 8px);
+  font-weight: 500;
+}
+.workflow li {
+  flex: 1;
+  position: relative;
+  background: var(--inactive);
+  color: var(--text);
+  text-align: center;
+  line-height: var(--workflow-height);
+  cursor: pointer;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--workflow-arrow)) 0,
+    100% 50%,
+    calc(100% - var(--workflow-arrow)) 100%,
+    0 100%,
+    var(--workflow-arrow) 50%
+  );
+  transition: all 0.2s ease;
+}
+.workflow li.active {
+  background: var(--active);
+  color: var(--text-active);
+  font-weight: 600;
+}
+.workflow li.completed {
+  background: var(--active);
+  color: var(--text-active);
+}
+.workflow li a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  padding: 0 6px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 0.8em;
+  white-space: nowrap;    /* prevent wrapping */
+  overflow: hidden;       /* hide overflow */
+  text-overflow: ellipsis;/* show "…" if too long */
+}
+.workflow li.completed::after {
+  content: "✓";
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Two-column form grid */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 10px;
+  row-gap: 16px;
+  margin-top: 20px;
+}
+.field {
+  display: flex;
+  flex-direction: column;   /* ✅ stack label above input */
+  gap: 4px;                 /* spacing between label and input */
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #444;
+}
+
+.field input,
+.field textarea,
+.field select {
+  font-size: 11px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #e0e0e0;
+  color: #000;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+
+label, select {
+  font-weight: 400;
+  font-size: 8px;
+  color: #444;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+div {
+  font-weight: 400;
+  font-size: 9px;
+  color: #444;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.value-box {
+  flex: 1;
+  min-width: 140px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #e0e0e0;
+  padding: 4px 8px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.empty {
+  color: #666;
+  font-style: italic;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #333;
+  font-family: "Roboto", Arial, sans-serif;
+}
+legend {
+  font-size: 9px;
+  font-weight: bold;
+  padding: 0 6px;
+  color: #333;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.section {
+  margin-top: 30px;
+}
+.section h2 {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "Roboto", Arial, sans-serif;
+}
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11px;
+  font-family: "Roboto", Arial, sans-serif;
+  padding-left: 15px;   /* ✅ moves all checkboxes over */
+}
+
+
+.date-row {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.date-row input[type="date"] {
+  width: 140px;
+  height: 9px;
+  font-size: 8px;
+  padding: 1px 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #e0e0e0;
+  color: #000;
+  font-family: "Roboto", Arial, sans-serif;
+  -webkit-appearance: none; /* Chrome/Safari */
+  -moz-appearance: none;    /* Firefox */
+  appearance: none;         /* Standard */ 
+}
+
+.duration-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.duration-grid label {
+  font-weight: 600;
+  font-size: 11px;
+  margin-right: 6px;
+  text-align: right;
+  width: auto;
+  font-family: "Roboto", Arial, sans-serif;
+}
+.duration-grid input[type="date"] {
+  width: 100%;
+  font-size: 11px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #e0e0e0;
+  color: #000;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+/* Responsive tweaks (Option 3 scaling) */
+@media (max-width: 900px) {
+  :root {
+    --workflow-height: 2.5vw;
+    --workflow-arrow: 0.8vw;
+  }
+  .workflow {
+    font-size: calc(0.4vw + 7px);
+  }
+  .workflow li a {
+    font-size: 0.75em;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --workflow-height: 22px;
+    --workflow-arrow: 6px;
+  }
+  .workflow {
+    font-size: 11px;
+  }
+  .workflow li a {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --workflow-height: 18px;
+    --workflow-arrow: 5px;
+  }
+  .workflow {
+    font-size: 9px;
+  }
+  .workflow li a {
+    font-size: 0.65em;
+  }
+
+ 
+}
